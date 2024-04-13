@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;transition: 0.5s;
+    font-family: Rubik, sans-serif;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: hsl(228 39% 23%);
+    min-height: 100vh;
+    color: rgba(255, 255, 255, 0.7);
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 3% 0;
+}
+nav a{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+nav img{
+    width: 8%;
+  }
+
+.areas{
+    gap: 30px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: 1px 1px 40px 0.1px rgba(0, 0, 0, 0.6);
+    padding: 50px;
+    margin: 0px 0px 70px 0;
+    border-radius: 10px;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 30px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    flex-wrap: wrap;
+    gap: 30px;
+    box-shadow: 1px 1px 40px 0.1px rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 10px;
+}
+.cards div div{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+input{
+    color: rgba(0, 0, 0, 0.9);
+}
+.card div button,.card button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+.card div button:hover,.card button:hover{
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: transparent;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.switchBtn {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    height: 34px;
+}
+
+.switchBtn input {
+    display: none;
+}
+
+.slide {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    padding: 8px;
+    color: #fff;
+}
+
+.slide:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 78px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
+
+input:checked + .slide {
+    background-color: #8CE196;
+    padding-left: 40px;
+}
+
+input:focus + .slide {
+    box-shadow: 0 0 1px #01aeed;
+}
+
+input:checked + .slide:before {
+    transform: translateX(26px);
+    left: -20px;
+}
+.slide.round {
+    border-radius: 34px;
+}
+
+.slide.round:before {
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:700px){
+    .areas{
+        flex-direction: column;
+        text-align: center;
+        width: 70%;
+    }
+    .cards {
+        flex-direction: column;
+    }
+    .card{
+        width: 80%;
+        margin-left: 5%;
+    }
+}

@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;transition: 0.5s;
+    font-family: Rubik, sans-serif;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: hsl(228 39% 23%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.banner nav{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 5% 0 5% 5%;
+    justify-content: space-between;
+    color: #fffc;
+    align-items: center;
+}
+.banner nav img{
+  width: 10%;
+}
+.banner nav div{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    gap: 8%;
+    justify-content: flex-end;
+}
+.banner nav div a{
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.banner nav div a:hover{
+    transform: scale(1.1);
+}
+
+
+
+.banner-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10vw;
+    gap: 4vh;
+    color: #ffffffb3;
+    height: 60vh;
+}
+
+.banner div h1{
+    color: #fffc;
+    font-size: 48px;
+}
+
+
+.text-animated{
+    font-size: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: max-content;
+    animation: typewriter 3s steps(80) infinite alternate,
+      blink 1000ms steps(40) infinite normal;
+    border-right: 5px solid black;
+}
+
+
+
+.banner div h3{
+    font-size: 24px;
+}
+.banner div div{
+  display: flex;
+  width: 90%;
+  justify-content: flex-start;
+  gap: 10vw;
+}
+.banner div div button{
+    width: 25%;
+    margin-left: 0;
+    border: 1px solid transparent;
+    padding: 15px 0;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.banner div div button:hover{
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+}
+
+
+.info{
+  margin: 80px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10vw;
+}
+.about, .weDo, .contact{
+  display: flex;
+  width: 90%;
+  margin-left: 5%;
+  justify-content: space-between;
+}
+.about div, .weDo div,.contact div{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 25%;
+}
+.contact div{
+  gap: 15%;
+}
+.about img,.weDo img,.contact img{
+  width: 40%;
+}
+
+.weDo{
+  flex-direction: row-reverse;
+}
+.contact div div{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 20%;
+}
+.contact div div button{
+  padding: 15px 25px;
+  border-radius: 5px;
+  border: 1px solid hsl(228 39% 23%);
+  background: hsl(228 39% 23%);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+.contact div div button:hover{
+  background: transparent;
+  color: hsl(228 39% 23%);
+  border: 1px solid hsl(228 39% 23%);
+}
+
+
+
+footer{
+  background: hsl(228 39% 23%);
+  width: 90%;
+  padding: 5%;
+  display: flex;
+  justify-content: space-around;
+}
+footer div{
+  display: flex;
+  flex-direction: column;
+  gap: 5vw;
+}
+footer div a{
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 20px;
+}
+footer div a:hover{
+  transform: scale(1.1);
+}
+
+
+
+
+
+
+@keyframes typewriter {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  @keyframes blink {
+    from {
+      border-color: white;
+    }
+    to {
+      border-color: transparent;
+    }
+  }
+
+
+  @media (max-width:620px){
+    .banner nav div{
+      width: 75%;
+      gap: 10px;
+    }
+    .banner div h3{
+      max-width: 95%;
+    }
+    .banner nav div a{
+      font-size: 16px
+    }
+    .banner div div button{
+      width: 35%;
+    }
+    .banner div div{
+      margin-top: 10%;
+    }
+
+
+    .info{
+      gap: 10vh;
+    }
+
+    .about, .weDo, .contact{
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+    }
+    .about div, .weDo div,.contact div{
+      width: 90%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact div div{
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      gap: 10%;
+    }
+  }
+
+  @media(max-width:500px){
+    .banner div h3{
+      font-size: 20px;
+    }
+    .banner-content{
+      margin-top: 10%;
+    }
+  }
