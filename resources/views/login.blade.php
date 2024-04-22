@@ -10,7 +10,7 @@
 <body>
     <main>
         <form action="/login" method="post">
-            <h1>Inicia Sesion</h1>
+            <h1>Inicia Sesión</h1>
 
             @if ($errors->any())
                 <button disabled class="error-message">Woops! Credenciales incorrectas</button>

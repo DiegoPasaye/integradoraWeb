@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,500&display=swap');
+*{
+    margin: 0;
+    padding: 0;transition: 0.5s;
+    font-family: Rubik, sans-serif;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: hsl(228 39% 23%);
+    min-height: 100vh;
+    color: rgba(255, 255, 255, 0.7);
+    align-items: center;
+    gap: 60px;
+}
+h2{
+    margin-top: 3%;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background: hsl(228 39% 23%);
+    gap: 50px;
+    margin: 50px 0;
+    box-shadow: 1px 1px 90px 0.2px rgba(0, 0, 0, 0.4);
+    padding: 50px 30px;
+    border-radius: 10px;
+}
+form h2{
+    text-align: center;
+}
+form input, form select{
+    padding: 15px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.9);
+}
+form input::placeholder{
+    padding-left: 10px;
+}
+
+form button{
+    padding: 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+form button:hover{
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: transparent;
+    color: white;
+}
+form input[type="checkbox"] {
+    margin: 10px 0;
+    width: 20px;
+    height: 20px;
+}
+
+form label {
+    display: inline;
+    margin: 10px 0;
+}
+.zonasDiv{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.zonasDiv div{
+    display: flex;
+    gap: 10px;
+}

@@ -26,8 +26,25 @@ Route::get('/admin', function () {
 })->middleware('auth');
 
 Route::get('/zona/{id}', [UserController::class, 'show'])->name('zona');
+Route::post('/admin/zonas/{id}/toggle', [UserController::class, 'toggleZonaStatus'])->name('toggle-zona');
+
+
+//ADMINISTRACION ----------------------------------------
+Route::get('/administracion', function () {
+    return view('administracion/admin');
+});
+
+
+Route::get('/administracion/users', [UserController::class, 'showUsers']);
+Route::delete('/administracion/users/{id}', [UserController::class, 'destroyUser']);
+Route::get('/administracion/users/{id}/edit', [UserController::class, 'editUserFull']);
+Route::put('/administracion/users/{id}', [UserController::class, 'updateUser']);
+Route::post('/administracion/users', [UserController::class, 'createUser']);
 
 
 
-
-
+Route::get('/administracion/zonas', [UserController::class, 'showZonas']);
+Route::get('/administracion/zonas/{id}/edit', [UserController::class, 'editZona']);
+Route::put('/administracion/zonas/{id}', [UserController::class, 'updateZona']);
+Route::post('/administracion/zonas', [UserController::class, 'createZona']);
+Route::delete('/administracion/zonas/{id}', [UserController::class, 'destroyZona']);

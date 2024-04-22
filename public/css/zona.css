@@ -4,6 +4,9 @@
     padding: 0;transition: 0.5s;
     font-family: Rubik, sans-serif;
 }
+h1{
+    margin-right: 5%;
+}
 main{
     display: flex;
     flex-direction: column;
@@ -49,4 +52,96 @@ tbody tr:nth-child(even) {
 
 tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.2);
+}
+button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.eliminar {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.actualizar {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+}
+.tdButtons{
+    display: flex;
+    gap: 10px;
+}
+#nuevoUsuario{
+    border: none;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.7);
+}
+#nuevaZona{
+    margin: 40px;
+}
+#nuevoUsuario:hover, #nuevaZona:hover{
+    background: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+.formNewUser, .formNewZona{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    background: hsl(228 39% 23%);
+    gap: 50px;
+    margin: 50px 0;
+    box-shadow: 1px 1px 90px 0.2px rgba(0, 0, 0, 0.4);
+    padding: 50px 30px;
+    border-radius: 10px;
+    display: none;
+}
+.formNewUser h2, .formNewZona h2{
+    text-align: center;
+}
+.formNewUser input, .formNewZona select, .formNewUser select, .formNewUser select option{
+    padding: 15px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: rgba(0, 0, 0, 0.9);
+}
+.formNewUser select option, .formNewZona select option {
+    font-size: 16px;
+}
+.formNewUser input::placeholder, .formNewZona input::placeholder{
+    padding-left: 10px;
+}
+
+.formNewUser button, .formNewZona button{
+    padding: 15px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid white;
+}
+.formNewUser button:hover, .formNewZona button:hover{
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: transparent;
+    color: white;
+}
+.formNewUser input[type="checkbox"] {
+    margin: 10px 0;
+    width: 20px;
+    height: 20px;
+}
+
+.formNewUser label, .formNewZona label {
+    display: inline;
+    margin: 10px 0;
+}
+.zonasDiv{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.zonasDiv div{
+    display: flex;
+    gap: 10px;
 }

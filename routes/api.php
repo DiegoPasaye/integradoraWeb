@@ -19,3 +19,11 @@ Route::get('/', function () {
 });
 Route::get('zonas', [UserController::class, 'getZonas']);
 Route::get('accesos', [UserController::class, 'getAccesos']);
+Route::get('/cors-test', function () {
+    return response()->json(['message' => 'CORS test successful'], 200);
+});
+
+//sin funcionar
+Route::post('/change-password', [UserController::class, 'changePassword']);
+
+Route::post('/update-user-image', [UserController::class, 'updateUserImage']);

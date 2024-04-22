@@ -12,7 +12,9 @@ main{
     min-height: 100vh;
     color: rgba(255, 255, 255, 0.7);
     align-items: center;
+    gap: 60px;
 }
+
 
 nav{
     display: flex;
