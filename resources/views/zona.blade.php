@@ -9,37 +9,78 @@
 <body>
     <main>
     <nav>
-        <img src="{{ asset('images/codev.png') }}" alt="Logo icon">
-            <a href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-            Cerrar sesión
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
+        <a href='/admin'>Regresar</a>
+        <h2>{{ $zona->nombre }}</h2>
+        <label class="switchBtn">
+        <input type="checkbox" id="toggle-{{ $zona->id }}" {{ $zona->encendido ? 'checked' : '' }}>
+            <div class="slide"></div>
+        </label>
     </nav>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>ID de Zona</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($accesos as $acceso)
-            <tr>
-                <td>{{ $acceso['_id'] }}</td>
-                <td>{{ $acceso['fecha']->toDateTime()->format('Y-m-d H:i:s') }}</td>
-                <td>{{ $acceso['_idZona'] }}</td>
-                <td><button>Eliminar</button></td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+        <h3>Entradas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($accesos as $acceso)
+                    @if ($acceso['tipo'] == 'entrada')
+                        <tr>
+                            <td>{{ $acceso['_id'] }}</td>
+                            <td>{{ $acceso['fecha']->toDateTime()->format('Y-m-d H:i:s') }}</td>
+                            <td>{{ $acceso['tipo'] }}</td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+
+        <h3>Salidas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($accesos as $acceso)
+                    @if ($acceso['tipo'] == 'salida')
+                        <tr>
+                            <td>{{ $acceso['_id'] }}</td>
+                            <td>{{ $acceso['fecha']->toDateTime()->format('Y-m-d H:i:s') }}</td>
+                            <td>{{ $acceso['tipo'] }}</td>
+                        </tr>
+                    @endif
+                @endforeach
+            </tbody>
+        </table>
+
 
     </main>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#toggle-{{ $zona->id }}').change(function() {
+        var encendido = $(this).is(':checked');
+        $.ajax({
+            url: '{{ route('toggle-zona', ['id' => $zona->id]) }}',
+            method: 'POST',
+            data: {
+                encendido: encendido,
+                _token: '{{ csrf_token() }}'
+            },
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    });
+});
+</script>
+
 </html>

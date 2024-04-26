@@ -14,9 +14,9 @@
                 <img src="{{ asset('images/codev.png') }}" alt="Logo icon">
 
                 <div class="nav-elements">
-                    <a href="login">Inicia sesion</a>
-                    <a href="">Informacion</a>
-                    <a href="">Contactanos</a>
+                    <a href="login">Inicia sesión</a>
+                    <a href="#info-section">Información</a>
+                    <a href="#contactFooter">Contáctanos</a>
                 </div>
             </nav>
 
@@ -32,13 +32,13 @@
             </div>
         </div>
 
-        <section class="info">
+        <section class="info" id="info-section">
             <div class="about">
                 <img src="{{ asset('images/equipo.svg') }}" alt="Team illustration">
 
                 <div>
-                    <h2>¿Quienes somos?</h2>
-                    <p>Somos un equipo de desarrollo enfocado en la combinacion de la tecnologia con la seguridad, logrando asi llevar la seguridad al siguiente nivel, implementando funcionalidades utiles y faciles de administrar para el usuario.</p>
+                    <h2>¿Quiénes somos?</h2>
+                    <p>Somos un equipo de desarrollo enfocado en la combinación de la tecnología con la seguridad, logrando así llevar la seguridad al siguiente nivel, implementando funcionalidades útiles y fáciles de administrar para el usuario.</p>
                 </div>
             </div>
 
@@ -46,19 +46,19 @@
                 <img src="{{ asset('images/alerta.svg') }}" alt="Alert illustration">
                 
                 <div>
-                    <h2>¿Que hacemos?</h2>
-                    <p>Creamos proyectos combinando el software con la seguridad, logrando asi proyectos avanzados con funcionalidades superiores a las convencionales, dando ell siguiente paso en la seguridad.</p>
+                    <h2>¿Qué hacemos?</h2>
+                    <p>Creamos proyectos combinando el software con la seguridad, logrando así proyectos avanzados con funcionalidades superiores a las convencionales, dando el siguiente paso en la seguridad.</p>
                 </div>
             </div>
 
             <div class="contact">
                 <img src="{{ asset('images/contactanos.svg') }}" alt="contact illustration">
 
-                <div>
-                    <h2>Contactanos</h2>
-                    <p>Contactanos para realizar una consulta acerca de el proyecto que tienes planeado y asi poder ayudarte proporcionandote una cotizacion</p>
+                <div id='contactanos'>
+                    <h2>Contáctanos</h2>
+                    <p>Contáctanos para realizar una consulta acerca del proyecto que tienes planeado y así poder ayudarte proporcionándote una cotización</p>
                     <div>
-                        <button>Whatsapp</button>
+                        <button>WhatsApp</button>
                         <button>Facebook</button>
                     </div>
                 </div>
@@ -66,20 +66,19 @@
         </section>
 
 
-        <footer>
+        <footer id='contactFooter'>
             <div>
                 <a href="">Facebook</a>
                 <a href="">Instagram</a>
                 <a href="">X</a>
             </div>
             <div>
-                <a href="">Whatsapp</a>
+                <a href="">WhatsApp</a>
                 <a href="">Threads</a>
                 <a href="">Descarga la app</a>
             </div>
         </footer>
 
-        <span class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">holaaaaaaa</span>
     </main>
 </body>
 <script src="{{ asset('js/app.js') }}"></script>

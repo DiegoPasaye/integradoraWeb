@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 /*
 la url de api.php lleva un localhost/api  /lo que quieras
 */
+Route::post('/change-password', [UserController::class, 'changePassword']);
 Route::get('/user', function (Request $request) {
     return $request->user();
 });
@@ -23,7 +24,9 @@ Route::get('/cors-test', function () {
     return response()->json(['message' => 'CORS test successful'], 200);
 });
 
-//sin funcionar
-Route::post('/change-password', [UserController::class, 'changePassword']);
+Route::post('/update-photo', [UserController::class, 'updatePhoto']);
+Route::get('/user-profile', [UserController::class, 'getUserProfile']);
+Route::post('/toggle-zona', [UserController::class, 'toggleZona']);
 
-Route::post('/update-user-image', [UserController::class, 'updateUserImage']);
+Route::post('/acceso', [UserController::class, 'registrarAcceso']);
+Route::get('/acceso', [UserController::class, 'obtenerAcceso']);

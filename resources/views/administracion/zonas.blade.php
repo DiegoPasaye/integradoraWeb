@@ -45,7 +45,7 @@
         <form id="formNewUser" class='formNewUser' action="/administracion/zonas" method="POST">
             @csrf
             <h2>Crear Zona</h2>
-                <input type="text" id="nombre" name="nombre" placeholder='Introduce el nombre de la zona'>
+                <input type="text" id="nombre" name="nombre" placeholder='Introduce el nombre de la zona' autocomplete="off">
                 <select id="encendido" name="encendido">
                     <option value="1" {{ $zona->encendido ? 'selected' : '' }}>Sí</option>
                     <option value="0" {{ $zona->encendido ? '' : 'selected' }}>No</option>

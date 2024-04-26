@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Zona;
 use Illuminate\Support\Facades\DB;
 use App\Models\Acceso;
+use Carbon\Carbon;
+
 
 class UserController extends Controller
 {
@@ -55,35 +57,47 @@ class UserController extends Controller
     {
         $id = intval($id);
         $accesos = Acceso::where('_idZona', $id)->get();
-        error_log(print_r($accesos, true));
-        return view('zona', ['accesos' => $accesos]);
+        $zona = Zona::where('id', $id)->first();
+        return view('zona', ['accesos' => $accesos, 'zona' => $zona]);
     }
-
+    
     public function showLoginForm(){
         $usuario = User::first();
         return view('login', ['usuario' => $usuario]);
     }    
-    public function toggleZonaStatus($id)
+    public function toggleZonaStatus(Request $request, $id)
     {
-        $id = intval($id);
-        $zona = Zona::findOrFail($id);
-        $zona->encendido = !$zona->encendido;
-        $zona->save();
-    
-        return redirect()->route('admin')->with('success', 'Estado de la zona actualizado');
+        $zona = Zona::where('id', intval($id))->first();
+        if ($zona) {
+            $zona->encendido = $request->input('encendido') === 'true' ? true : false;
+            $zona->save();
+        }
+
+        return response()->json(['success' => true]);
     }
 
 
     //administracion ----------------------------------------------------------------------------
-    public function showZonas(){
-        $zonas = Zona::all();
-        return view('administracion/zonas', ['zonas' => $zonas]);
-    }
     public function showUsers(){
         $zonas = Zona::all();
         $users = User::all();
+    
+        $zonasLookup = [];
+        foreach ($zonas as $zona) {
+            $zonasLookup[$zona->id] = $zona;
+        }
+        foreach ($users as $user) {
+            $userZonas = [];
+            foreach ($user->zonasId as $zonaId) {
+                if (isset($zonasLookup[$zonaId])) {
+                    $userZonas[] = $zonasLookup[$zonaId]->nombre;
+                }
+            }
+            $user->zonasId = $userZonas;
+        }
         return view('administracion.users', ['users' => $users, 'zonas' => $zonas]);
     }
+    
     public function destroyUser($id)
     {
         User::destroy($id);
@@ -124,6 +138,10 @@ class UserController extends Controller
 
 
 
+    public function showZonas(){
+        $zonas = Zona::all();
+        return view('administracion/zonas', ['zonas' => $zonas]);
+    }
     public function createZona(Request $request)
     {
         $request->validate([
@@ -213,38 +231,68 @@ class UserController extends Controller
         return response()->json(['accesos' => $accesos]);
     }   
 
-    //sin funcionar
     public function changePassword(Request $request)
     {
-        $user = $request->user();
+        $usuario = User::where('usuario', $request->usuario)->first();
     
-        if ($request->oldPassword !== $user->contraseña) {
+        if (!$usuario || $request->oldPassword !== $usuario->contraseña) {
             return response()->json(['message' => 'La contraseña actual es incorrecta'], 401);
         }
     
-        $user->contraseña = $request->newPassword;
-        $user->save();
+        $usuario->contraseña = $request->newPassword;
+        $usuario->save();
     
         return response()->json(['message' => 'Contraseña cambiada exitosamente'], 200);
     }
 
-    public function updateUserImage(Request $request)
-    {
-        $user = $request->user();
-        $imageUrl = $request->imageUrl;
-    
-        $image = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $imageUrl));
-    
-        $imageName = time() . '.png';
-    
-        file_put_contents(public_path() . '/' . $imageName, $image);
-    
-        $user->imageUrl = $imageName;
-        $user->save();
-    
-        return response()->json(['message' => 'Imagen actualizada exitosamente'], 200);
-    }
-    
 
+    public function updatePhoto(Request $request)
+    {
+        $usuario = User::where('usuario', $request->usuario)->first();
+    
+        if (!$usuario) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+    
+        $usuario->photoUrl = $request->photoUrl;
+        $usuario->save();
+    
+        return response()->json(['message' => 'Foto actualizada exitosamente'], 200);
+    }
+    public function getUserProfile(Request $request)
+    {
+        $usuario = User::where('usuario', $request->usuario)->first();
+
+        if (!$usuario) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+
+        return response()->json($usuario);
+    }
+    public function toggleZona(Request $request)
+    {
+        $zona = Zona::where('id', $request->id)->first();
+        if (!$zona) {
+            return response()->json(['message' => 'Zona no encontrada'], 404);
+        }
+        $zona->encendido = $request->encendido;
+        $zona->save();
+        return response()->json(['message' => 'Estado de la zona actualizado exitosamente'], 200);
+    }
+
+    public function registrarAcceso(Request $request)
+    {
+        $acceso = new Acceso;
+        $acceso->fecha = date('Y-m-d H:i:s');
+        $acceso->_idZona = $request->_idZona;
+        $acceso->tipo = $request->tipo;
+        $acceso->save();
+
+        return response()->json(['message' => 'Acceso registrado exitosamente'], 200);
+    }
+    public function obtenerAcceso(Request $request)
+    {
+        return response()->json(['message' => '¡Acceso obtenido correctamente!']);
+    }
 
 }

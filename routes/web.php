@@ -29,6 +29,8 @@ Route::get('/zona/{id}', [UserController::class, 'show'])->name('zona');
 Route::post('/admin/zonas/{id}/toggle', [UserController::class, 'toggleZonaStatus'])->name('toggle-zona');
 
 
+Route::post('/zona/{id}/toggle', [UserController::class, 'toggleZonaStatus'])->name('toggle-zona');
+
 //ADMINISTRACION ----------------------------------------
 Route::get('/administracion', function () {
     return view('administracion/admin');

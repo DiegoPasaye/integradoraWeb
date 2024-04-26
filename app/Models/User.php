@@ -20,7 +20,7 @@ class User extends Model implements AuthenticatableContract
         'usuario',
         'contraseña',
         'zonas',
-        'imageUrl'
+        'photoUrl'
     ];
     
 

@@ -12,8 +12,8 @@
         @csrf
         @method('PUT')
             <h2>Actualizar Usuario</h2>
-            <input type="text" id="usuario" name="usuario" placeholder='Introduce el nombre de usuario'>
-            <input type="text" id="contraseña" name="contraseña" placeholder='Introduce la nueva contraseña'>
+            <input type="text" id="usuario" name="usuario" placeholder='Introduce el nombre de usuario' autocomplete="off">
+            <input type="text" id="contraseña" name="contraseña" placeholder='Introduce la nueva contraseña' autocomplete="off">
             <label for="">Elige las zonas a las que tendrá acceso el usuario:</label>
             <div class='zonasDiv'>
                 @foreach ($zonas as $zona)

@@ -21,5 +21,6 @@ class Acceso extends Model
         '_id',
         'fecha',
         '_idZona',
+        'tipo'
     ];
 }

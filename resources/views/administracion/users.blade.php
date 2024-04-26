@@ -24,25 +24,19 @@
                 <th>Acciones</th>
             </tr>
             @foreach ($users as $user)
-            <tr>
+                <tr>
                 <td>{{ $user->usuario }}</td>
-
-
                 <td>
-                    @foreach ($user->zonasId as $zonaId)
-                        {{ $zonaId }}
-                    @endforeach
+                    {{ implode(' - ', $user->zonasId) }}
                 </td>
-
-
-                    <td class='tdButtons'>
-                    <form action="/administracion/users/{{ $user->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class='eliminar' type="submit">Eliminar</button>
-                    </form>
-                        <button class='actualizar' onclick="window.location.href='/administracion/users/{{ $user->id }}/edit'">Actualizar</button>
-                    </td>
+                <td class='tdButtons'>
+                <form action="/administracion/users/{{ $user->id }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class='eliminar' type="submit">Eliminar</button>
+                </form>
+                    <button class='actualizar' onclick="window.location.href='/administracion/users/{{ $user->id }}/edit'">Actualizar</button>
+                </td>
                 </tr>
             @endforeach
         </table>
@@ -52,8 +46,8 @@
         <form class='formNewUser' action="/administracion/users" method="POST">
         @csrf
             <h2>Crear Usuario</h2>
-            <input type="text" id="usuario" name="usuario" placeholder='Introduce el nombre de usuario'>
-            <input type="text" id="contraseña" name="contraseña" placeholder='Introduce la contraseña'>
+            <input type="text" id="usuario" name="usuario" placeholder='Introduce el nombre de usuario' autocomplete="off">
+            <input type="text" id="contraseña" name="contraseña" placeholder='Introduce la contraseña' autocomplete="off">
             <label for="">Elige las zonas a las que tendrá acceso el usuario:</label>
             <div class='zonasDiv'>
                 @foreach ($zonas as $zona)

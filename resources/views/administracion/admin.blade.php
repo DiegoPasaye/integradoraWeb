@@ -8,7 +8,22 @@
 </head>
 <body>
     <main class='adminContainer'>
-        <h1>Bienvenido administrador!</h1>
+        <nav>
+            <img src="{{ asset('images/codev.png') }}" alt="Logo icon">
+
+            <h1>¡Bienvenido, admin!</h1>
+
+            <div>
+                <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                Cerrar sesión
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </nav>
 
         <div class="cards">
             <div class="card">

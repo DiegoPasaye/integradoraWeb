@@ -10,7 +10,7 @@
 <body>
     <main>
     <nav>
-    <img src="{{ asset('images/codev.png') }}" alt="Logo icon">
+        <img src="{{ asset('images/codev.png') }}" alt="Logo icon">
         <a href="{{ route('logout') }}"
            onclick="event.preventDefault();
                      document.getElementById('logout-form').submit();">
@@ -23,21 +23,13 @@
 
 
         <section class="areas">
-        <h1>Areas</h1>
+        <h1>Áreas</h1>
 
         <div class="cards">
         @foreach ($zonas as $zona)
             <div class="card">
                 <div>
                     <h3>{{ $zona->nombre }}</h3>
-                    <form action="{{ route('toggle-zona', $zona->id) }}" method="POST">
-                        @csrf
-                        <!-- no se puede hacer que funciona -->
-                        <label class="switchBtn">
-                            <input type="checkbox" id="toggle-{{ $zona->id }}" {{ $zona->encendido ? 'checked' : '' }} onchange="this.form.submit()">
-                            <div class="slide"></div>
-                        </label>
-                    </form>
                 </div>
                 <p>Zona de acceso al {{ $zona->nombre }}</p>
                 <button onclick="window.location='{{ route('zona', ['id' => $zona->id]) }}'">Administrar</button>
@@ -88,4 +80,3 @@
     });
 </script>
 </html>
-
